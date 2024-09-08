@@ -52,7 +52,7 @@ def split_text(text, max_length=20):
     return line1, line2
 
 def get_output_media(audio_file_path, timed_captions, background_video_data, video_server, job_id):
-    OUTPUT_FILE_NAME = "/home/dani/workspaces/video-generator/rendered_video"+ str(job_id) +".mp4"
+    OUTPUT_FILE_NAME = "../video-generator/rendered_video"+ str(job_id) +".mp4"
     magick_path = get_program_path("magick")
     print(magick_path)
     if magick_path:
