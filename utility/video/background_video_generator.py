@@ -1,10 +1,22 @@
 import os 
 import requests
 from utility.utils import log_response,LOG_TYPE_PEXEL
+import logging
 
 PEXELS_API_KEY = ''
 
+
+logging.basicConfig(
+    filename='app.log',            # Log file name
+    filemode='a',                  # Append mode
+    format='%(asctime)s - %(levelname)s - %(message)s',  # Log format
+    level=logging.DEBUG            # Log level (DEBUG for detailed logs)
+)
+
 def search_videos(query_string, orientation_landscape=False):
+   
+    if not PEXELS_API_KEY:
+        raise ValueError("PEXELS API key is missing. Please provide a valid API key.")
    
     url = "https://api.pexels.com/videos/search"
     headers = {
@@ -47,7 +59,7 @@ def getBestVideo(query_string, orientation_landscape=True, used_vids=[]):
                 if video_file['width'] == 1080 and video_file['height'] == 1920:
                     if not (video_file['link'].split('.hd')[0] in used_vids):
                         return video_file['link']
-    print("NO LINKS found for this round of search with query :", query_string)
+    logging.warning("NO LINKS found for this round of search with query :%s", query_string)
     return None
 
 

@@ -4,9 +4,18 @@ import json
 import re
 from datetime import datetime
 from utility.utils import log_response,LOG_TYPE_GPT
+import logging
+
 
 client = OpenAI(api_key='')
 log_directory = ".logs/gpt_logs"
+
+logging.basicConfig(
+    filename='app.log',            # Log file name
+    filemode='a',                  # Append mode
+    format='%(asctime)s - %(levelname)s - %(message)s',  # Log format
+    level=logging.DEBUG            # Log level (DEBUG for detailed logs)
+)
 
 prompt = """# Instructions
 
@@ -36,6 +45,8 @@ def fix_json(json_str):
     json_str = json_str.replace('"you didn"t"', '"you didn\'t"')
     return json_str
 
+
+
 def getVideoSearchQueriesTimed(script,captions_timed):
     end = captions_timed[-1][0][1]
     try:
@@ -46,12 +57,12 @@ def getVideoSearchQueriesTimed(script,captions_timed):
         try:
             out = json.loads(content)
         except Exception as e:
-            print(e)
+            logging.error(e)
             content = fix_json(content.replace("```json", "").replace("```", ""))
             out = json.loads(content)
         return out
     except Exception as e:
-        print("error in response",e)
+        logging.error("error in response %s",e)
    
     return None
 
@@ -72,7 +83,7 @@ Timed Captions:{}
     
     text = response.choices[0].message.content.strip()
     text = re.sub('\s+', ' ', text)
-    print("Text", text)
+    logging.info("ChatGPT Text: %s", text)
     log_response(LOG_TYPE_GPT,script,text)
     return text
 
