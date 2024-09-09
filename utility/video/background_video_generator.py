@@ -43,7 +43,8 @@ def search_videos(query_string, orientation_landscape=False):
     params = {
         "query": query_string,
         "orientation": "landscape" if orientation_landscape else "portrait",
-        "per_page": 15
+        "per_page": 15,
+        "size": "medium"
     }
 
     response = requests.get(url, headers=headers, params=params)

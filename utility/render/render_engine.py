@@ -1,9 +1,8 @@
-import time
 import os
 import tempfile
-import zipfile
 import platform
 import subprocess
+import logging
 from moviepy.editor import (AudioFileClip, ColorClip, CompositeVideoClip, CompositeAudioClip, ImageClip,
                             TextClip, VideoFileClip)
 from moviepy.audio.fx.audio_loop import audio_loop
@@ -23,6 +22,13 @@ def read_api_key(file_path):
     except Exception as e:
         print(f"Error reading properties file: {e}")
     return None
+
+logging.basicConfig(
+    filename='/home/dani/workspaces/Text-To-Video-AI/app.log',            # Log file name
+    filemode='a',                  # Append mode
+    format='%(asctime)s - %(levelname)s - %(message)s',  # Log format
+    level=logging.DEBUG            # Log level (DEBUG for detailed logs)
+)
 
 generateFolder = read_api_key('/etc/properties/videogen.properties')
 
@@ -44,24 +50,19 @@ def get_program_path(program_name):
 
 def split_text(text, max_length=20):
     """Split text into two lines without cutting words."""
-    # If text is short enough, no need to split
     if len(text) <= max_length:
         return text, ''
     
-    # Find the last space before the max_length
     split_index = text.rfind(' ', 0, max_length)
     
-    # If no space is found, split at the max_length
     if split_index == -1:
         split_index = max_length
     
-    # Check if the split point is at the start or end of the text
     if split_index == 0:
         split_index = text.find(' ', max_length)
         if split_index == -1:
             split_index = len(text)
     
-    # Ensure that we don't split at the very end of the text
     line1 = text[:split_index].strip()
     line2 = text[split_index:].strip()
     
@@ -79,46 +80,52 @@ def get_output_media(audio_file_path, timed_captions, background_video_data, vid
         os.environ['IMAGEMAGICK_BINARY'] = '/usr/bin/convert'
     
     visual_clips = []
-    for (t1, t2), video_url in background_video_data:
-        # Download the video file
-        video_filename = tempfile.NamedTemporaryFile(delete=False).name
-        download_file(video_url, video_filename)
-        
-        # Create VideoFileClip from the downloaded file
-        video_clip = VideoFileClip(video_filename)
-        video_clip = video_clip.set_start(t1)
-        video_clip = video_clip.set_end(t2)
-        visual_clips.append(video_clip)
+
+    stroke_width=30
+    target_resolution = (1080, 1920)
+
+
+    for (t1_video, t2_video), video_url in background_video_data:
+        for (t1_caption, t2_caption), text in timed_captions:
+            if (t1_video, t2_video) == (t1_caption, t2_caption):
+                video_filename = tempfile.NamedTemporaryFile(delete=False).name
+                download_file(video_url, video_filename)
+                
+                video_clip = VideoFileClip(video_filename)
+                video_clip = video_clip.resize(newsize=target_resolution)
+                video_clip = video_clip.set_start(t1_video).set_end(t2_video)
+                line1, line2 = split_text(text)
+                splitText = f"{line1}\n{line2}"
+                yPosition=video_clip.h * 4/9
+
+                background_clip = TextClip(txt=splitText, fontsize=100, font="Arial-bold", color="white", size=(video_clip.w * 3/4, None),
+                                    method="caption", align="North")
+                background_clip = background_clip.set_start(t1_caption).set_end(t2_caption).set_position(("center", yPosition))
+                
+                text_clip = TextClip(txt=splitText, fontsize=100, font="Arial-bold", color="black", size=(video_clip.w * 3/4 + stroke_width, None),
+                                    stroke_width=stroke_width, stroke_color="black", method="caption", align="North")
+                text_clip = text_clip.set_start(t1_caption).set_end(t2_caption).set_position(("center", yPosition))
+
+                combined_clip = CompositeVideoClip([video_clip , text_clip,  background_clip])
+                logging.info("Created video %s", video_filename)
+                visual_clips.append(combined_clip)
+                    
+                
+    video = CompositeVideoClip(visual_clips)
     
     audio_clips = []
     audio_file_clip = AudioFileClip(audio_file_path)
     audio_clips.append(audio_file_clip)
 
-    for (t1, t2), text in timed_captions:
-        line1, line2 = split_text(text)
-        splitText = f"{line1}\n{line2}"
-        text_clip = TextClip(txt=splitText, fontsize=100, color="white", stroke_width=4, stroke_color="black", method="label")
-        text_clip = text_clip.set_start(t1)
-        text_clip = text_clip.set_end(t2)
-        text_clip = text_clip.set_position(["center", 800])
-
-        background_clip = ColorClip(size=(text_clip.w + 20, text_clip.h + 20), color=(0, 0, 0))
-        background_clip = background_clip.set_opacity(0.5)
-        background_clip = background_clip.set_start(t1).set_end(t2).set_position(["center", 800])
-
-        # combined_clip = CompositeVideoClip([background_clip, text_clip])
-        visual_clips.append(text_clip)
-
-    video = CompositeVideoClip(visual_clips)
     
+
     if audio_clips:
         audio = CompositeAudioClip(audio_clips)
         video.duration = audio.duration
         video.audio = audio
 
-    video.write_videofile(OUTPUT_FILE_NAME, codec='libx264', audio_codec='aac', fps=25, preset='veryfast')
-    
-    # Clean up downloaded files
+    video.write_videofile(OUTPUT_FILE_NAME, codec='libx264', audio_codec='aac', fps=25, preset='veryfast', threads=4)
+
     for (t1, t2), video_url in background_video_data:
         video_filename = tempfile.NamedTemporaryFile(delete=False).name
         os.remove(video_filename)
