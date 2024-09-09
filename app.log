@@ -8638,3 +8638,485 @@ Challenges: Despite its successes, China faces challenges such as income inequal
 2024-09-09 22:26:22,268 - INFO - Created video /tmp/tmp8nt1pri2
 2024-09-09 22:27:43,432 - INFO - Video generation completed
 2024-09-09 22:27:43,432 - INFO - Process completed for topic: China’s economic rise has been nothing short of meteoric. Once a predominantly agrarian society, it has transformed into a global manufacturing powerhouse 
+2024-09-09 23:28:53,957 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-09-09 23:28:53,958 - DEBUG - load_verify_locations cafile='/home/dani/.local/lib/python3.11/site-packages/certifi/cacert.pem'
+2024-09-09 23:28:54,012 - INFO - Generating script for topic: China’s economic rise has been nothing short of meteoric. Once a predominantly agrarian society, it has transformed into a global manufacturing powerhouse 
+2024-09-09 23:28:54,013 - DEBUG - Using selector: EpollSelector
+2024-09-09 23:28:59,701 - DEBUG - Add segment 1 at step 17:
+	<|transcribe|><|0.00|> China's economic rise has been nothing short of meteoric.<|3.12|>
+2024-09-09 23:29:00,670 - DEBUG - Add segment 2 at step 36:
+	<|3.12|><|3.84|> Once a predominantly agrarian society, it has transformed into a global manufacturing powerhouse.<|9.04|>
+2024-09-09 23:29:00,691 - DEBUG - Compile results
+2024-09-09 23:29:00,714 - INFO - Timed captions generated: [((0, 1.68), "China's economic rise has been"), ((1.68, 4.18), 'nothing short of meteoric Once'), ((4.18, 5.8), 'a predominantly agrarian society'), ((5.8, 7.6), 'it has transformed into a global'), ((7.6, 8.88), 'manufacturing powerhouse')]
+2024-09-09 23:29:00,718 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': '# Instructions\n\nGiven the following video script and timed captions, extract three visually concrete and specific keywords for each time segment that can be used to search for background videos. The keywords should be short and capture the main essence of the sentence. They can be synonyms or related terms. If a caption is vague or general, consider the next timed caption for more context. If a keyword is a single word, try to return a two-word keyword that is visually concrete. If a time frame contains two or more important pieces of information, divide it into shorter time frames with one keyword each. Ensure that the time periods are strictly consecutive and cover the entire length of the video. Each keyword should cover between 2-4 seconds. The output should be in JSON format, like this: [[[t1, t2], ["keyword1", "keyword2", "keyword3"]], [[t2, t3], ["keyword4", "keyword5", "keyword6"]], ...]. Please handle all edge cases, such as overlapping time segments, vague or general captions, and single-word keywords.\n\nFor example, if the caption is \'The cheetah is the fastest land animal, capable of running at speeds up to 75 mph\', the keywords should include \'cheetah running\', \'fastest animal\', and \'75 mph\'. Similarly, for \'The Great Wall of China is one of the most iconic landmarks in the world\', the keywords should be \'Great Wall of China\', \'iconic landmark\', and \'China landmark\'.\n\nImportant Guidelines:\n\nUse only English in your text queries.\nEach search string must depict something visual.\nThe depictions have to be extremely visually concrete, like rainy street, or cat sleeping.\n\'emotional moment\' <= BAD, because it doesn\'t depict something visually.\n\'crying child\' <= GOOD, because it depicts something visual.\nThe list must always contain the most relevant and appropriate query searches.\n[\'Car\', \'Car driving\', \'Car racing\', \'Car parked\'] <= BAD, because it\'s 4 strings.\n[\'Fast car\'] <= GOOD, because it\'s 1 string.\n[\'Un chien\', \'une voiture rapide\', \'une maison rouge\'] <= BAD, because the text query is NOT in English.\n  '}, {'role': 'user', 'content': 'Script: China’s economic rise has been nothing short of meteoric. Once a predominantly agrarian society, it has transformed into a global manufacturing powerhouse \nTimed Captions:((0, 1.68), "China\'s economic rise has been")((1.68, 4.18), \'nothing short of meteoric Once\')((4.18, 5.8), \'a predominantly agrarian society\')((5.8, 7.6), \'it has transformed into a global\')((7.6, 8.88), \'manufacturing powerhouse\')\n'}], 'model': 'gpt-4o-mini', 'temperature': 1}}
+2024-09-09 23:29:00,725 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2024-09-09 23:29:00,725 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2024-09-09 23:29:00,830 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f94d85c2690>
+2024-09-09 23:29:00,830 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7f94da5e44d0> server_hostname='api.openai.com' timeout=5.0
+2024-09-09 23:29:00,856 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f94ee7f9990>
+2024-09-09 23:29:00,857 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-09-09 23:29:00,858 - DEBUG - send_request_headers.complete
+2024-09-09 23:29:00,858 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-09-09 23:29:00,859 - DEBUG - send_request_body.complete
+2024-09-09 23:29:00,859 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-09-09 23:29:02,677 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Mon, 09 Sep 2024 20:29:02 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'user-coogycxmxdecuft25r4ao3er'), (b'openai-processing-ms', b'1441'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=15552000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'200000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'199365'), (b'x-ratelimit-reset-requests', b'8.64s'), (b'x-ratelimit-reset-tokens', b'190ms'), (b'x-request-id', b'req_bd72214859ae68696e0ae248905e559f'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=nnK78vgGxECqX5devaqVaF.cCb0wLkSebxNDpDgS1Iw-1725913742-1.0.1.1-UZAEWo3LxDBKdrIsfJoqNyGtgXdgSYQSSWfdwEu71NGY01Hqu8m8daGV2bub9Zt6sDEF4UoOoOPTNAvySpm5rA; path=/; expires=Mon, 09-Sep-24 20:59:02 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=opZmLJgKKWCzB0KRNAO6qVD2JrTrzr_8MyvqzQMX05U-1725913742564-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8c09ed906dd498ae-OTP'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-09-09 23:29:02,679 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-09-09 23:29:02,680 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-09-09 23:29:02,681 - DEBUG - receive_response_body.complete
+2024-09-09 23:29:02,681 - DEBUG - response_closed.started
+2024-09-09 23:29:02,681 - DEBUG - response_closed.complete
+2024-09-09 23:29:02,682 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers([('date', 'Mon, 09 Sep 2024 20:29:02 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'user-coogycxmxdecuft25r4ao3er'), ('openai-processing-ms', '1441'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=15552000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '200000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '199365'), ('x-ratelimit-reset-requests', '8.64s'), ('x-ratelimit-reset-tokens', '190ms'), ('x-request-id', 'req_bd72214859ae68696e0ae248905e559f'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=nnK78vgGxECqX5devaqVaF.cCb0wLkSebxNDpDgS1Iw-1725913742-1.0.1.1-UZAEWo3LxDBKdrIsfJoqNyGtgXdgSYQSSWfdwEu71NGY01Hqu8m8daGV2bub9Zt6sDEF4UoOoOPTNAvySpm5rA; path=/; expires=Mon, 09-Sep-24 20:59:02 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=opZmLJgKKWCzB0KRNAO6qVD2JrTrzr_8MyvqzQMX05U-1725913742564-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8c09ed906dd498ae-OTP'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2024-09-09 23:29:02,682 - DEBUG - request_id: req_bd72214859ae68696e0ae248905e559f
+2024-09-09 23:29:02,691 - INFO - ChatGPT Text: ```json [ [[0, 1.68], ["China economy", "economic growth", "global rise"]], [[1.68, 4.18], ["meteoric rise", "rapid development", "economic boom"]], [[4.18, 5.8], ["agrarian society", "farming community", "rural lifestyle"]], [[5.8, 7.6], ["global transformation", "economic transition", "modern development"]], [[7.6, 8.88], ["manufacturing powerhouse", "industrial strength", "production leader"]] ] ```
+2024-09-09 23:29:02,692 - ERROR - Expecting value: line 1 column 1 (char 0)
+2024-09-09 23:29:02,692 - INFO - Search terms generated: [[[0, 1.68], ['China economy', 'economic growth', 'global rise']], [[1.68, 4.18], ['meteoric rise', 'rapid development', 'economic boom']], [[4.18, 5.8], ['agrarian society', 'farming community', 'rural lifestyle']], [[5.8, 7.6], ['global transformation', 'economic transition', 'modern development']], [[7.6, 8.88], ['manufacturing powerhouse', 'industrial strength', 'production leader']]]
+2024-09-09 23:29:02,697 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2024-09-09 23:29:02,985 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=China+economy&orientation=portrait&per_page=15&size=medium HTTP/1.1" 200 None
+2024-09-09 23:29:03,002 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2024-09-09 23:29:03,293 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=meteoric+rise&orientation=portrait&per_page=15&size=medium HTTP/1.1" 200 None
+2024-09-09 23:29:03,318 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2024-09-09 23:29:03,602 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=agrarian+society&orientation=portrait&per_page=15&size=medium HTTP/1.1" 200 None
+2024-09-09 23:29:03,642 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2024-09-09 23:29:03,907 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=global+transformation&orientation=portrait&per_page=15&size=medium HTTP/1.1" 200 None
+2024-09-09 23:29:03,945 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2024-09-09 23:29:04,165 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=manufacturing+powerhouse&orientation=portrait&per_page=15&size=medium HTTP/1.1" 200 None
+2024-09-09 23:29:04,200 - INFO - Background videos generated: [[[0, 1.68], 'https://videos.pexels.com/video-files/6282378/6282378-hd_1080_1920_30fps.mp4'], [[1.68, 4.18], 'https://videos.pexels.com/video-files/5829168/5829168-hd_1080_1920_24fps.mp4'], [[4.18, 5.8], 'https://videos.pexels.com/video-files/6258197/6258197-hd_1080_1920_24fps.mp4'], [[5.8, 7.6], 'https://videos.pexels.com/video-files/5124229/5124229-hd_1080_1920_25fps.mp4'], [[7.6, 8.88], 'https://videos.pexels.com/video-files/4480603/4480603-hd_1080_1920_30fps.mp4']]
+2024-09-09 23:29:04,205 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2024-09-09 23:29:04,297 - DEBUG - https://videos.pexels.com:443 "GET /video-files/6282378/6282378-hd_1080_1920_30fps.mp4 HTTP/1.1" 200 3136640
+2024-09-09 23:29:05,193 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-09 23:29:05,193 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-09 23:29:05,193 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-09 23:29:05,193 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-09 23:29:05,194 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-09 23:29:05,194 - DEBUG - STREAM b'IDAT' 119 19031
+2024-09-09 23:29:05,194 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-09 23:29:05,194 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-09 23:29:05,194 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-09 23:29:05,194 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-09 23:29:05,194 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-09 23:29:05,194 - DEBUG - STREAM b'IDAT' 119 19031
+2024-09-09 23:29:05,197 - DEBUG - STREAM b'tEXt' 19162 38
+2024-09-09 23:29:05,198 - DEBUG - STREAM b'tEXt' 19212 15
+2024-09-09 23:29:05,198 - DEBUG - STREAM b'tEXt' 19239 37
+2024-09-09 23:29:05,198 - DEBUG - STREAM b'tEXt' 19288 37
+2024-09-09 23:29:05,198 - DEBUG - Error closing: Operation on closed image
+2024-09-09 23:29:05,366 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-09 23:29:05,366 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-09 23:29:05,367 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-09 23:29:05,367 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-09 23:29:05,367 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-09 23:29:05,367 - DEBUG - STREAM b'IDAT' 119 12515
+2024-09-09 23:29:05,367 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-09 23:29:05,367 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-09 23:29:05,367 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-09 23:29:05,367 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-09 23:29:05,367 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-09 23:29:05,367 - DEBUG - STREAM b'IDAT' 119 12515
+2024-09-09 23:29:05,371 - DEBUG - STREAM b'tEXt' 12646 38
+2024-09-09 23:29:05,371 - DEBUG - STREAM b'tEXt' 12696 15
+2024-09-09 23:29:05,371 - DEBUG - STREAM b'tEXt' 12723 37
+2024-09-09 23:29:05,371 - DEBUG - STREAM b'tEXt' 12772 37
+2024-09-09 23:29:05,372 - DEBUG - Error closing: Operation on closed image
+2024-09-09 23:29:05,396 - INFO - Created video /tmp/tmp58x8otd5
+2024-09-09 23:29:05,397 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2024-09-09 23:29:05,473 - DEBUG - https://videos.pexels.com:443 "GET /video-files/5829168/5829168-hd_1080_1920_24fps.mp4 HTTP/1.1" 200 5464559
+2024-09-09 23:29:06,913 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-09 23:29:06,913 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-09 23:29:06,913 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-09 23:29:06,913 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-09 23:29:06,913 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-09 23:29:06,913 - DEBUG - STREAM b'IDAT' 119 16185
+2024-09-09 23:29:06,913 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-09 23:29:06,913 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-09 23:29:06,913 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-09 23:29:06,914 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-09 23:29:06,914 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-09 23:29:06,914 - DEBUG - STREAM b'IDAT' 119 16185
+2024-09-09 23:29:06,916 - DEBUG - STREAM b'tEXt' 16316 38
+2024-09-09 23:29:06,916 - DEBUG - STREAM b'tEXt' 16366 15
+2024-09-09 23:29:06,916 - DEBUG - STREAM b'tEXt' 16393 37
+2024-09-09 23:29:06,916 - DEBUG - STREAM b'tEXt' 16442 37
+2024-09-09 23:29:06,916 - DEBUG - Error closing: Operation on closed image
+2024-09-09 23:29:07,089 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-09 23:29:07,089 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-09 23:29:07,090 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-09 23:29:07,090 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-09 23:29:07,090 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-09 23:29:07,090 - DEBUG - STREAM b'IDAT' 119 11192
+2024-09-09 23:29:07,090 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-09 23:29:07,090 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-09 23:29:07,090 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-09 23:29:07,090 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-09 23:29:07,090 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-09 23:29:07,090 - DEBUG - STREAM b'IDAT' 119 11192
+2024-09-09 23:29:07,093 - DEBUG - STREAM b'tEXt' 11323 38
+2024-09-09 23:29:07,093 - DEBUG - STREAM b'tEXt' 11373 15
+2024-09-09 23:29:07,093 - DEBUG - STREAM b'tEXt' 11400 37
+2024-09-09 23:29:07,093 - DEBUG - STREAM b'tEXt' 11449 37
+2024-09-09 23:29:07,094 - DEBUG - Error closing: Operation on closed image
+2024-09-09 23:29:07,116 - INFO - Created video /tmp/tmpq416rfod
+2024-09-09 23:29:07,118 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2024-09-09 23:29:07,206 - DEBUG - https://videos.pexels.com:443 "GET /video-files/6258197/6258197-hd_1080_1920_24fps.mp4 HTTP/1.1" 200 11719102
+2024-09-09 23:29:09,516 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-09 23:29:09,516 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-09 23:29:09,517 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-09 23:29:09,517 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-09 23:29:09,517 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-09 23:29:09,517 - DEBUG - STREAM b'IDAT' 119 20623
+2024-09-09 23:29:09,517 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-09 23:29:09,517 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-09 23:29:09,517 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-09 23:29:09,517 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-09 23:29:09,517 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-09 23:29:09,517 - DEBUG - STREAM b'IDAT' 119 20623
+2024-09-09 23:29:09,520 - DEBUG - STREAM b'tEXt' 20754 40
+2024-09-09 23:29:09,520 - DEBUG - STREAM b'tEXt' 20806 15
+2024-09-09 23:29:09,520 - DEBUG - STREAM b'tEXt' 20833 37
+2024-09-09 23:29:09,520 - DEBUG - STREAM b'tEXt' 20882 37
+2024-09-09 23:29:09,521 - DEBUG - Error closing: Operation on closed image
+2024-09-09 23:29:09,738 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-09 23:29:09,739 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-09 23:29:09,739 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-09 23:29:09,739 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-09 23:29:09,740 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-09 23:29:09,740 - DEBUG - STREAM b'IDAT' 119 11712
+2024-09-09 23:29:09,740 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-09 23:29:09,740 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-09 23:29:09,741 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-09 23:29:09,741 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-09 23:29:09,741 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-09 23:29:09,741 - DEBUG - STREAM b'IDAT' 119 11712
+2024-09-09 23:29:09,744 - DEBUG - STREAM b'tEXt' 11843 40
+2024-09-09 23:29:09,745 - DEBUG - STREAM b'tEXt' 11895 15
+2024-09-09 23:29:09,746 - DEBUG - STREAM b'tEXt' 11922 37
+2024-09-09 23:29:09,746 - DEBUG - STREAM b'tEXt' 11971 37
+2024-09-09 23:29:09,747 - DEBUG - Error closing: Operation on closed image
+2024-09-09 23:29:09,772 - INFO - Created video /tmp/tmp5subm4wc
+2024-09-09 23:29:09,774 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2024-09-09 23:29:09,850 - DEBUG - https://videos.pexels.com:443 "GET /video-files/5124229/5124229-hd_1080_1920_25fps.mp4 HTTP/1.1" 200 10122420
+2024-09-09 23:29:11,968 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-09 23:29:11,969 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-09 23:29:11,969 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-09 23:29:11,969 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-09 23:29:11,969 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-09 23:29:11,969 - DEBUG - STREAM b'IDAT' 119 20407
+2024-09-09 23:29:11,969 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-09 23:29:11,969 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-09 23:29:11,969 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-09 23:29:11,969 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-09 23:29:11,969 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-09 23:29:11,969 - DEBUG - STREAM b'IDAT' 119 20407
+2024-09-09 23:29:11,973 - DEBUG - STREAM b'tEXt' 20538 40
+2024-09-09 23:29:11,973 - DEBUG - STREAM b'tEXt' 20590 15
+2024-09-09 23:29:11,973 - DEBUG - STREAM b'tEXt' 20617 37
+2024-09-09 23:29:11,973 - DEBUG - STREAM b'tEXt' 20666 37
+2024-09-09 23:29:11,974 - DEBUG - Error closing: Operation on closed image
+2024-09-09 23:29:12,135 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-09 23:29:12,136 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-09 23:29:12,136 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-09 23:29:12,136 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-09 23:29:12,136 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-09 23:29:12,136 - DEBUG - STREAM b'IDAT' 119 12845
+2024-09-09 23:29:12,136 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-09 23:29:12,136 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-09 23:29:12,136 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-09 23:29:12,136 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-09 23:29:12,136 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-09 23:29:12,136 - DEBUG - STREAM b'IDAT' 119 12845
+2024-09-09 23:29:12,140 - DEBUG - STREAM b'tEXt' 12976 40
+2024-09-09 23:29:12,140 - DEBUG - STREAM b'tEXt' 13028 15
+2024-09-09 23:29:12,140 - DEBUG - STREAM b'tEXt' 13055 37
+2024-09-09 23:29:12,140 - DEBUG - STREAM b'tEXt' 13104 37
+2024-09-09 23:29:12,141 - DEBUG - Error closing: Operation on closed image
+2024-09-09 23:29:12,165 - INFO - Created video /tmp/tmp7bvjvufa
+2024-09-09 23:29:12,166 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2024-09-09 23:29:12,234 - DEBUG - https://videos.pexels.com:443 "GET /video-files/4480603/4480603-hd_1080_1920_30fps.mp4 HTTP/1.1" 200 13298362
+2024-09-09 23:29:15,034 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-09 23:29:15,034 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-09 23:29:15,035 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-09 23:29:15,035 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-09 23:29:15,035 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-09 23:29:15,035 - DEBUG - STREAM b'IDAT' 119 16199
+2024-09-09 23:29:15,035 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-09 23:29:15,035 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-09 23:29:15,035 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-09 23:29:15,035 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-09 23:29:15,035 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-09 23:29:15,035 - DEBUG - STREAM b'IDAT' 119 16199
+2024-09-09 23:29:15,038 - DEBUG - STREAM b'tEXt' 16330 32
+2024-09-09 23:29:15,038 - DEBUG - STREAM b'tEXt' 16374 15
+2024-09-09 23:29:15,038 - DEBUG - STREAM b'tEXt' 16401 37
+2024-09-09 23:29:15,038 - DEBUG - STREAM b'tEXt' 16450 37
+2024-09-09 23:29:15,038 - DEBUG - Error closing: Operation on closed image
+2024-09-09 23:29:15,170 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-09 23:29:15,170 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-09 23:29:15,170 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-09 23:29:15,171 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-09 23:29:15,171 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-09 23:29:15,171 - DEBUG - STREAM b'IDAT' 119 8651
+2024-09-09 23:29:15,171 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-09 23:29:15,171 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-09 23:29:15,171 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-09 23:29:15,171 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-09 23:29:15,171 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-09 23:29:15,171 - DEBUG - STREAM b'IDAT' 119 8651
+2024-09-09 23:29:15,174 - DEBUG - STREAM b'tEXt' 8782 32
+2024-09-09 23:29:15,174 - DEBUG - STREAM b'tEXt' 8826 15
+2024-09-09 23:29:15,174 - DEBUG - STREAM b'tEXt' 8853 37
+2024-09-09 23:29:15,174 - DEBUG - STREAM b'tEXt' 8902 37
+2024-09-09 23:29:15,174 - DEBUG - Error closing: Operation on closed image
+2024-09-09 23:29:15,197 - INFO - Created video /tmp/tmpp44hreur
+2024-09-09 23:30:39,676 - INFO - Video generation completed
+2024-09-09 23:30:39,676 - INFO - Process completed for topic: China’s economic rise has been nothing short of meteoric. Once a predominantly agrarian society, it has transformed into a global manufacturing powerhouse 
+2024-09-09 23:48:53,035 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-09-09 23:48:53,036 - DEBUG - load_verify_locations cafile='/home/dani/.local/lib/python3.11/site-packages/certifi/cacert.pem'
+2024-09-09 23:48:53,091 - INFO - Generating script for topic: China’s economic rise has been nothing short of meteoric. Once a predominantly agrarian society, it has transformed into a global manufacturing powerhouse 
+2024-09-09 23:48:53,091 - DEBUG - Using selector: EpollSelector
+2024-09-09 23:48:58,278 - DEBUG - Add segment 1 at step 17:
+	<|transcribe|><|0.00|> China's economic rise has been nothing short of meteoric.<|3.12|>
+2024-09-09 23:48:59,184 - DEBUG - Add segment 2 at step 36:
+	<|3.12|><|3.84|> Once a predominantly agrarian society, it has transformed into a global manufacturing powerhouse.<|9.04|>
+2024-09-09 23:48:59,222 - DEBUG - Compile results
+2024-09-09 23:48:59,223 - INFO - location to time {(0, 8): 0.56, (8, 17): 0.96, (17, 22): 1.34, (22, 26): 1.54, (26, 31): 1.68, (31, 39): 1.98, (39, 45): 2.28, (45, 48): 2.46, (48, 58): 2.94, (58, 63): 4.18, (63, 65): 4.32, (65, 79): 4.72, (79, 88): 5.34, (88, 97): 5.8, (97, 100): 6.18, (100, 104): 6.3, (104, 116): 6.84, (116, 121): 7.2, (121, 123): 7.36, (123, 130): 7.6, (130, 144): 8.24, (144, 156): 8.88}
+2024-09-09 23:48:59,243 - INFO - Timed captions generated: [((0, 1.68), "China's economic rise has been"), ((1.68, 4.18), 'nothing short of meteoric Once'), ((4.18, 5.8), 'a predominantly agrarian society'), ((5.8, 7.6), 'it has transformed into a global'), ((7.6, 8.88), 'manufacturing powerhouse')]
+2024-09-09 23:49:40,321 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-09-09 23:49:40,321 - DEBUG - load_verify_locations cafile='/home/dani/.local/lib/python3.11/site-packages/certifi/cacert.pem'
+2024-09-09 23:49:40,378 - INFO - Generating script for topic: China’s economic rise has been nothing short of meteoric. Once a predominantly agrarian society, it has transformed into a global manufacturing powerhouse 
+2024-09-09 23:49:40,378 - DEBUG - Using selector: EpollSelector
+2024-09-09 23:49:45,769 - DEBUG - Add segment 1 at step 17:
+	<|transcribe|><|0.00|> China's economic rise has been nothing short of meteoric.<|3.12|>
+2024-09-09 23:49:46,552 - DEBUG - Add segment 2 at step 36:
+	<|3.12|><|3.84|> Once a predominantly agrarian society, it has transformed into a global manufacturing powerhouse.<|9.04|>
+2024-09-09 23:49:46,573 - DEBUG - Compile results
+2024-09-09 23:49:46,575 - INFO - location to time {(0, 8): 0.56, (8, 17): 0.96, (17, 22): 1.34, (22, 26): 1.54, (26, 31): 1.68, (31, 39): 1.98, (39, 45): 2.28, (45, 48): 2.46, (48, 58): 2.94, (58, 63): 4.18, (63, 65): 4.32, (65, 79): 4.72, (79, 88): 5.34, (88, 97): 5.8, (97, 100): 6.18, (100, 104): 6.3, (104, 116): 6.84, (116, 121): 7.2, (121, 123): 7.36, (123, 130): 7.6, (130, 144): 8.24, (144, 156): 8.88}
+2024-09-09 23:49:46,599 - INFO - Timed captions generated: [((0, 1.68), "China's economic rise has been"), ((1.68, 4.18), 'nothing short of meteoric Once'), ((4.18, 5.8), 'a predominantly agrarian society'), ((5.8, 7.6), 'it has transformed into a global'), ((7.6, 8.88), 'manufacturing powerhouse')]
+2024-09-10 00:04:02,832 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-09-10 00:04:02,833 - DEBUG - load_verify_locations cafile='/home/dani/.local/lib/python3.11/site-packages/certifi/cacert.pem'
+2024-09-10 00:04:02,886 - INFO - Generating script for topic: China’s economic rise has been nothing short of meteoric. Once a predominantly agrarian society, it has transformed into a global manufacturing powerhouse 
+2024-09-10 00:04:02,886 - DEBUG - Using selector: EpollSelector
+2024-09-10 00:04:07,414 - DEBUG - Add segment 1 at step 17:
+	<|transcribe|><|0.00|> China's economic rise has been nothing short of meteoric.<|3.12|>
+2024-09-10 00:04:08,086 - DEBUG - Add segment 2 at step 36:
+	<|3.12|><|3.84|> Once a predominantly agrarian society, it has transformed into a global manufacturing powerhouse.<|9.04|>
+2024-09-10 00:04:08,107 - DEBUG - Compile results
+2024-09-10 00:04:08,129 - INFO - Timed captions generated: [((0, 1.68), "China's economic rise has been"), ((1.68, 2.94), 'nothing short of meteoric.'), ((2.94, 5.8), 'Once a predominantly agrarian society,'), ((5.8, 7.6), 'it has transformed into a global'), ((7.6, 8.88), 'manufacturing powerhouse.')]
+2024-09-10 00:04:08,134 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': '# Instructions\n\nGiven the following video script and timed captions, extract three visually concrete and specific keywords for each time segment that can be used to search for background videos. The keywords should be short and capture the main essence of the sentence. They can be synonyms or related terms. If a caption is vague or general, consider the next timed caption for more context. If a keyword is a single word, try to return a two-word keyword that is visually concrete. If a time frame contains two or more important pieces of information, divide it into shorter time frames with one keyword each. Ensure that the time periods are strictly consecutive and cover the entire length of the video. Each keyword should cover between 2-4 seconds. The output should be in JSON format, like this: [[[t1, t2], ["keyword1", "keyword2", "keyword3"]], [[t2, t3], ["keyword4", "keyword5", "keyword6"]], ...]. Please handle all edge cases, such as overlapping time segments, vague or general captions, and single-word keywords.\n\nFor example, if the caption is \'The cheetah is the fastest land animal, capable of running at speeds up to 75 mph\', the keywords should include \'cheetah running\', \'fastest animal\', and \'75 mph\'. Similarly, for \'The Great Wall of China is one of the most iconic landmarks in the world\', the keywords should be \'Great Wall of China\', \'iconic landmark\', and \'China landmark\'.\n\nImportant Guidelines:\n\nUse only English in your text queries.\nEach search string must depict something visual.\nThe depictions have to be extremely visually concrete, like rainy street, or cat sleeping.\n\'emotional moment\' <= BAD, because it doesn\'t depict something visually.\n\'crying child\' <= GOOD, because it depicts something visual.\nThe list must always contain the most relevant and appropriate query searches.\n[\'Car\', \'Car driving\', \'Car racing\', \'Car parked\'] <= BAD, because it\'s 4 strings.\n[\'Fast car\'] <= GOOD, because it\'s 1 string.\n[\'Un chien\', \'une voiture rapide\', \'une maison rouge\'] <= BAD, because the text query is NOT in English.\n  '}, {'role': 'user', 'content': 'Script: China’s economic rise has been nothing short of meteoric. Once a predominantly agrarian society, it has transformed into a global manufacturing powerhouse \nTimed Captions:((0, 1.68), "China\'s economic rise has been")((1.68, 2.94), \'nothing short of meteoric.\')((2.94, 5.8), \'Once a predominantly agrarian society,\')((5.8, 7.6), \'it has transformed into a global\')((7.6, 8.88), \'manufacturing powerhouse.\')\n'}], 'model': 'gpt-4o-mini', 'temperature': 1}}
+2024-09-10 00:04:08,141 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2024-09-10 00:04:08,141 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2024-09-10 00:04:08,197 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f3cdbf49a90>
+2024-09-10 00:04:08,197 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7f3cd9fa44d0> server_hostname='api.openai.com' timeout=5.0
+2024-09-10 00:04:08,220 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f3cd9fbf550>
+2024-09-10 00:04:08,220 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-09-10 00:04:08,221 - DEBUG - send_request_headers.complete
+2024-09-10 00:04:08,221 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-09-10 00:04:08,221 - DEBUG - send_request_body.complete
+2024-09-10 00:04:08,222 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-09-10 00:04:09,683 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Mon, 09 Sep 2024 21:04:09 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'user-coogycxmxdecuft25r4ao3er'), (b'openai-processing-ms', b'1181'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=15552000; includeSubDomains; preload'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'200000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'199363'), (b'x-ratelimit-reset-requests', b'8.64s'), (b'x-ratelimit-reset-tokens', b'190ms'), (b'x-request-id', b'req_6061f5fe7539eeddbd40b1f4fef87ad2'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=hrc4pnJYWY.5I1WLoMPU1yOmDFsjifNHPgu47qaGO3I-1725915849-1.0.1.1-JOqebeS6xhEvVuXG45Cs0_TXF3US2IjOfjqZAetT4gC2.CatTleTbcJhtSwU_RzYnj61UV_mk2D1pqpd3d3s6Q; path=/; expires=Mon, 09-Sep-24 21:34:09 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=M5j2ZzEo89ZBYbFHgHWxEhvoaNq1dbw8QoIZzMM_iAo-1725915849637-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8c0a21037c2b98ac-OTP'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-09-10 00:04:09,686 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-09-10 00:04:09,686 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-09-10 00:04:09,687 - DEBUG - receive_response_body.complete
+2024-09-10 00:04:09,687 - DEBUG - response_closed.started
+2024-09-10 00:04:09,687 - DEBUG - response_closed.complete
+2024-09-10 00:04:09,687 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers([('date', 'Mon, 09 Sep 2024 21:04:09 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'user-coogycxmxdecuft25r4ao3er'), ('openai-processing-ms', '1181'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=15552000; includeSubDomains; preload'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '200000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '199363'), ('x-ratelimit-reset-requests', '8.64s'), ('x-ratelimit-reset-tokens', '190ms'), ('x-request-id', 'req_6061f5fe7539eeddbd40b1f4fef87ad2'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=hrc4pnJYWY.5I1WLoMPU1yOmDFsjifNHPgu47qaGO3I-1725915849-1.0.1.1-JOqebeS6xhEvVuXG45Cs0_TXF3US2IjOfjqZAetT4gC2.CatTleTbcJhtSwU_RzYnj61UV_mk2D1pqpd3d3s6Q; path=/; expires=Mon, 09-Sep-24 21:34:09 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=M5j2ZzEo89ZBYbFHgHWxEhvoaNq1dbw8QoIZzMM_iAo-1725915849637-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8c0a21037c2b98ac-OTP'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2024-09-10 00:04:09,687 - DEBUG - request_id: req_6061f5fe7539eeddbd40b1f4fef87ad2
+2024-09-10 00:04:09,690 - INFO - ChatGPT Text: ```json [ [[0, 1.68], ["China economy", "economic growth", "rise"]] , [[1.68, 2.94], ["meteoric rise", "rapid growth", "significant change"]], [[2.94, 5.8], ["agrarian society", "farming landscape", "rural China"]], [[5.8, 7.6], ["global transformation", "economic transformation", "industrial change"]], [[7.6, 8.88], ["manufacturing powerhouse", "factory production", "industrial hub"]] ] ```
+2024-09-10 00:04:09,690 - ERROR - Expecting value: line 1 column 1 (char 0)
+2024-09-10 00:04:09,691 - INFO - Search terms generated: [[[0, 1.68], ['China economy', 'economic growth', 'rise']], [[1.68, 2.94], ['meteoric rise', 'rapid growth', 'significant change']], [[2.94, 5.8], ['agrarian society', 'farming landscape', 'rural China']], [[5.8, 7.6], ['global transformation', 'economic transformation', 'industrial change']], [[7.6, 8.88], ['manufacturing powerhouse', 'factory production', 'industrial hub']]]
+2024-09-10 00:04:09,692 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2024-09-10 00:04:10,093 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=China+economy&orientation=portrait&per_page=15&size=medium HTTP/1.1" 200 None
+2024-09-10 00:04:10,121 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2024-09-10 00:04:10,399 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=meteoric+rise&orientation=portrait&per_page=15&size=medium HTTP/1.1" 200 None
+2024-09-10 00:04:10,433 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2024-09-10 00:04:10,707 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=agrarian+society&orientation=portrait&per_page=15&size=medium HTTP/1.1" 200 None
+2024-09-10 00:04:10,746 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2024-09-10 00:04:11,013 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=global+transformation&orientation=portrait&per_page=15&size=medium HTTP/1.1" 200 None
+2024-09-10 00:04:11,026 - DEBUG - Starting new HTTPS connection (1): api.pexels.com:443
+2024-09-10 00:04:11,232 - DEBUG - https://api.pexels.com:443 "GET /videos/search?query=manufacturing+powerhouse&orientation=portrait&per_page=15&size=medium HTTP/1.1" 200 None
+2024-09-10 00:04:11,265 - INFO - Background videos generated: [[[0, 1.68], 'https://videos.pexels.com/video-files/6282378/6282378-hd_1080_1920_30fps.mp4'], [[1.68, 2.94], 'https://videos.pexels.com/video-files/5829168/5829168-hd_1080_1920_24fps.mp4'], [[2.94, 5.8], 'https://videos.pexels.com/video-files/6258197/6258197-hd_1080_1920_24fps.mp4'], [[5.8, 7.6], 'https://videos.pexels.com/video-files/5124229/5124229-hd_1080_1920_25fps.mp4'], [[7.6, 8.88], 'https://videos.pexels.com/video-files/4480603/4480603-hd_1080_1920_30fps.mp4']]
+2024-09-10 00:04:11,270 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2024-09-10 00:04:11,354 - DEBUG - https://videos.pexels.com:443 "GET /video-files/6282378/6282378-hd_1080_1920_30fps.mp4 HTTP/1.1" 200 3136640
+2024-09-10 00:04:12,250 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-10 00:04:12,250 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-10 00:04:12,250 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-10 00:04:12,250 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-10 00:04:12,250 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-10 00:04:12,250 - DEBUG - STREAM b'IDAT' 119 19031
+2024-09-10 00:04:12,250 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-10 00:04:12,250 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-10 00:04:12,250 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-10 00:04:12,250 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-10 00:04:12,250 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-10 00:04:12,250 - DEBUG - STREAM b'IDAT' 119 19031
+2024-09-10 00:04:12,254 - DEBUG - STREAM b'tEXt' 19162 38
+2024-09-10 00:04:12,254 - DEBUG - STREAM b'tEXt' 19212 15
+2024-09-10 00:04:12,254 - DEBUG - STREAM b'tEXt' 19239 37
+2024-09-10 00:04:12,254 - DEBUG - STREAM b'tEXt' 19288 37
+2024-09-10 00:04:12,255 - DEBUG - Error closing: Operation on closed image
+2024-09-10 00:04:12,423 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-10 00:04:12,423 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-10 00:04:12,423 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-10 00:04:12,423 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-10 00:04:12,423 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-10 00:04:12,423 - DEBUG - STREAM b'IDAT' 119 12515
+2024-09-10 00:04:12,423 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-10 00:04:12,423 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-10 00:04:12,424 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-10 00:04:12,424 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-10 00:04:12,424 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-10 00:04:12,424 - DEBUG - STREAM b'IDAT' 119 12515
+2024-09-10 00:04:12,428 - DEBUG - STREAM b'tEXt' 12646 38
+2024-09-10 00:04:12,428 - DEBUG - STREAM b'tEXt' 12696 15
+2024-09-10 00:04:12,428 - DEBUG - STREAM b'tEXt' 12723 37
+2024-09-10 00:04:12,428 - DEBUG - STREAM b'tEXt' 12772 37
+2024-09-10 00:04:12,428 - DEBUG - Error closing: Operation on closed image
+2024-09-10 00:04:12,452 - INFO - Created video /tmp/tmpr5et5zqj
+2024-09-10 00:04:12,453 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2024-09-10 00:04:12,521 - DEBUG - https://videos.pexels.com:443 "GET /video-files/5829168/5829168-hd_1080_1920_24fps.mp4 HTTP/1.1" 200 5464559
+2024-09-10 00:04:13,893 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-10 00:04:13,894 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-10 00:04:13,894 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-10 00:04:13,894 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-10 00:04:13,894 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-10 00:04:13,894 - DEBUG - STREAM b'IDAT' 119 13685
+2024-09-10 00:04:13,894 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-10 00:04:13,894 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-10 00:04:13,894 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-10 00:04:13,894 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-10 00:04:13,894 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-10 00:04:13,894 - DEBUG - STREAM b'IDAT' 119 13685
+2024-09-10 00:04:13,897 - DEBUG - STREAM b'tEXt' 13816 34
+2024-09-10 00:04:13,897 - DEBUG - STREAM b'tEXt' 13862 15
+2024-09-10 00:04:13,897 - DEBUG - STREAM b'tEXt' 13889 37
+2024-09-10 00:04:13,897 - DEBUG - STREAM b'tEXt' 13938 37
+2024-09-10 00:04:13,897 - DEBUG - Error closing: Operation on closed image
+2024-09-10 00:04:14,028 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-10 00:04:14,028 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-10 00:04:14,028 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-10 00:04:14,028 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-10 00:04:14,029 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-10 00:04:14,029 - DEBUG - STREAM b'IDAT' 119 9177
+2024-09-10 00:04:14,029 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-10 00:04:14,029 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-10 00:04:14,029 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-10 00:04:14,029 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-10 00:04:14,029 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-10 00:04:14,029 - DEBUG - STREAM b'IDAT' 119 9177
+2024-09-10 00:04:14,032 - DEBUG - STREAM b'tEXt' 9308 34
+2024-09-10 00:04:14,032 - DEBUG - STREAM b'tEXt' 9354 15
+2024-09-10 00:04:14,032 - DEBUG - STREAM b'tEXt' 9381 37
+2024-09-10 00:04:14,032 - DEBUG - STREAM b'tEXt' 9430 37
+2024-09-10 00:04:14,032 - DEBUG - Error closing: Operation on closed image
+2024-09-10 00:04:14,055 - INFO - Created video /tmp/tmp0ho3gpcf
+2024-09-10 00:04:14,056 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2024-09-10 00:04:14,144 - DEBUG - https://videos.pexels.com:443 "GET /video-files/6258197/6258197-hd_1080_1920_24fps.mp4 HTTP/1.1" 200 11719102
+2024-09-10 00:04:16,553 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-10 00:04:16,553 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-10 00:04:16,553 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-10 00:04:16,553 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-10 00:04:16,553 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-10 00:04:16,553 - DEBUG - STREAM b'IDAT' 119 26771
+2024-09-10 00:04:16,553 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-10 00:04:16,553 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-10 00:04:16,553 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-10 00:04:16,553 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-10 00:04:16,553 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-10 00:04:16,553 - DEBUG - STREAM b'IDAT' 119 26771
+2024-09-10 00:04:16,557 - DEBUG - STREAM b'tEXt' 26902 46
+2024-09-10 00:04:16,557 - DEBUG - STREAM b'tEXt' 26960 15
+2024-09-10 00:04:16,557 - DEBUG - STREAM b'tEXt' 26987 37
+2024-09-10 00:04:16,557 - DEBUG - STREAM b'tEXt' 27036 37
+2024-09-10 00:04:16,558 - DEBUG - Error closing: Operation on closed image
+2024-09-10 00:04:16,738 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-10 00:04:16,738 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-10 00:04:16,738 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-10 00:04:16,738 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-10 00:04:16,738 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-10 00:04:16,738 - DEBUG - STREAM b'IDAT' 119 15177
+2024-09-10 00:04:16,738 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-10 00:04:16,738 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-10 00:04:16,738 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-10 00:04:16,738 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-10 00:04:16,738 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-10 00:04:16,738 - DEBUG - STREAM b'IDAT' 119 15177
+2024-09-10 00:04:16,742 - DEBUG - STREAM b'tEXt' 15308 46
+2024-09-10 00:04:16,742 - DEBUG - STREAM b'tEXt' 15366 15
+2024-09-10 00:04:16,742 - DEBUG - STREAM b'tEXt' 15393 37
+2024-09-10 00:04:16,742 - DEBUG - STREAM b'tEXt' 15442 37
+2024-09-10 00:04:16,743 - DEBUG - Error closing: Operation on closed image
+2024-09-10 00:04:16,766 - INFO - Created video /tmp/tmpmtd93tg_
+2024-09-10 00:04:16,768 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2024-09-10 00:04:16,835 - DEBUG - https://videos.pexels.com:443 "GET /video-files/5124229/5124229-hd_1080_1920_25fps.mp4 HTTP/1.1" 200 10122420
+2024-09-10 00:04:19,047 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-10 00:04:19,047 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-10 00:04:19,047 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-10 00:04:19,047 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-10 00:04:19,047 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-10 00:04:19,047 - DEBUG - STREAM b'IDAT' 119 20407
+2024-09-10 00:04:19,047 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-10 00:04:19,047 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-10 00:04:19,047 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-10 00:04:19,047 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-10 00:04:19,047 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-10 00:04:19,047 - DEBUG - STREAM b'IDAT' 119 20407
+2024-09-10 00:04:19,051 - DEBUG - STREAM b'tEXt' 20538 40
+2024-09-10 00:04:19,051 - DEBUG - STREAM b'tEXt' 20590 15
+2024-09-10 00:04:19,051 - DEBUG - STREAM b'tEXt' 20617 37
+2024-09-10 00:04:19,051 - DEBUG - STREAM b'tEXt' 20666 37
+2024-09-10 00:04:19,052 - DEBUG - Error closing: Operation on closed image
+2024-09-10 00:04:19,219 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-10 00:04:19,219 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-10 00:04:19,219 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-10 00:04:19,219 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-10 00:04:19,219 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-10 00:04:19,219 - DEBUG - STREAM b'IDAT' 119 12845
+2024-09-10 00:04:19,220 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-10 00:04:19,220 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-10 00:04:19,220 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-10 00:04:19,220 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-10 00:04:19,220 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-10 00:04:19,220 - DEBUG - STREAM b'IDAT' 119 12845
+2024-09-10 00:04:19,224 - DEBUG - STREAM b'tEXt' 12976 40
+2024-09-10 00:04:19,224 - DEBUG - STREAM b'tEXt' 13028 15
+2024-09-10 00:04:19,224 - DEBUG - STREAM b'tEXt' 13055 37
+2024-09-10 00:04:19,224 - DEBUG - STREAM b'tEXt' 13104 37
+2024-09-10 00:04:19,225 - DEBUG - Error closing: Operation on closed image
+2024-09-10 00:04:19,248 - INFO - Created video /tmp/tmpdse9p21t
+2024-09-10 00:04:19,249 - DEBUG - Starting new HTTPS connection (1): videos.pexels.com:443
+2024-09-10 00:04:19,321 - DEBUG - https://videos.pexels.com:443 "GET /video-files/4480603/4480603-hd_1080_1920_30fps.mp4 HTTP/1.1" 200 13298362
+2024-09-10 00:04:21,949 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-10 00:04:21,949 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-10 00:04:21,949 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-10 00:04:21,949 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-10 00:04:21,949 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-10 00:04:21,949 - DEBUG - STREAM b'IDAT' 119 16253
+2024-09-10 00:04:21,949 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-10 00:04:21,949 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-10 00:04:21,949 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-10 00:04:21,949 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-10 00:04:21,949 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-10 00:04:21,949 - DEBUG - STREAM b'IDAT' 119 16253
+2024-09-10 00:04:21,952 - DEBUG - STREAM b'tEXt' 16384 33
+2024-09-10 00:04:21,952 - DEBUG - STREAM b'tEXt' 16429 15
+2024-09-10 00:04:21,952 - DEBUG - STREAM b'tEXt' 16456 37
+2024-09-10 00:04:21,952 - DEBUG - STREAM b'tEXt' 16505 37
+2024-09-10 00:04:21,952 - DEBUG - Error closing: Operation on closed image
+2024-09-10 00:04:22,084 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-10 00:04:22,085 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-10 00:04:22,085 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-10 00:04:22,085 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-10 00:04:22,085 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-10 00:04:22,085 - DEBUG - STREAM b'IDAT' 119 8676
+2024-09-10 00:04:22,085 - DEBUG - STREAM b'IHDR' 16 13
+2024-09-10 00:04:22,085 - DEBUG - STREAM b'gAMA' 41 4
+2024-09-10 00:04:22,085 - DEBUG - STREAM b'cHRM' 57 32
+2024-09-10 00:04:22,085 - DEBUG - STREAM b'bKGD' 101 6
+2024-09-10 00:04:22,085 - DEBUG - b'bKGD' 101 6 (unknown)
+2024-09-10 00:04:22,085 - DEBUG - STREAM b'IDAT' 119 8676
+2024-09-10 00:04:22,088 - DEBUG - STREAM b'tEXt' 8807 33
+2024-09-10 00:04:22,088 - DEBUG - STREAM b'tEXt' 8852 15
+2024-09-10 00:04:22,088 - DEBUG - STREAM b'tEXt' 8879 37
+2024-09-10 00:04:22,088 - DEBUG - STREAM b'tEXt' 8928 37
+2024-09-10 00:04:22,088 - DEBUG - Error closing: Operation on closed image
+2024-09-10 00:04:22,110 - INFO - Created video /tmp/tmp0m328ejy
+2024-09-10 00:05:41,437 - INFO - Video generation completed
+2024-09-10 00:05:41,437 - INFO - Process completed for topic: China’s economic rise has been nothing short of meteoric. Once a predominantly agrarian society, it has transformed into a global manufacturing powerhouse 
