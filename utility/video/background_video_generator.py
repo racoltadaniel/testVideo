@@ -77,7 +77,7 @@ def getBestVideo(query_string, orientation_landscape=True, used_vids=[]):
                 if video_file['width'] == 1080 and video_file['height'] == 1920:
                     if not (video_file['link'].split('.hd')[0] in used_vids):
                         return video_file['link']
-    logging.warning("NO LINKS found for this round of search with query :%s", query_string)
+    logging.error("NO LINKS found for this round of search with query :%s", query_string)
     return None
 
 
