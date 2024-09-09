@@ -4,6 +4,24 @@ from utility.utils import log_response,LOG_TYPE_PEXEL
 import logging
 
 PEXELS_API_KEY = ''
+def read_api_key(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            for line in file:
+                if line.startswith('pexels_api_key='):
+                    return line.split('=', 1)[1].strip()
+    except FileNotFoundError:
+        logging.error(f"Properties file not found: {file_path}")
+    except Exception as e:
+        logging.error(f"Error reading properties file: {e}")
+    return None
+
+api_key = read_api_key('/etc/properties/videogen.properties')
+if api_key:
+    PEXELS_API_KEY=api_key
+else:
+    raise ValueError("API key is not available. Please check the properties file.")
+
 
 
 logging.basicConfig(

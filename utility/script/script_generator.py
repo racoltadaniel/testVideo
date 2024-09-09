@@ -2,7 +2,23 @@ import os
 from openai import OpenAI
 import json
 
-client = OpenAI(api_key='')
+def read_api_key(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            for line in file:
+                if line.startswith('openai_api_key='):
+                    return line.split('=', 1)[1].strip()
+    except FileNotFoundError:
+        print(f"Properties file not found: {file_path}")
+    except Exception as e:
+        print(f"Error reading properties file: {e}")
+    return None
+
+api_key = read_api_key('/etc/properties/videogen.properties')
+if api_key:
+    client = OpenAI(api_key=api_key)
+else:
+    raise ValueError("API key is not available. Please check the properties file.")
 
 def generate_script(topic):
     prompt = (

@@ -7,7 +7,7 @@ from utility.utils import log_response,LOG_TYPE_GPT
 import logging
 
 
-client = OpenAI(api_key='')
+
 log_directory = ".logs/gpt_logs"
 
 logging.basicConfig(
@@ -35,6 +35,25 @@ The list must always contain the most relevant and appropriate query searches.
 ['Fast car'] <= GOOD, because it's 1 string.
 ['Un chien', 'une voiture rapide', 'une maison rouge'] <= BAD, because the text query is NOT in English.
   """
+
+
+def read_api_key(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            for line in file:
+                if line.startswith('openai_api_key='):
+                    return line.split('=', 1)[1].strip()
+    except FileNotFoundError:
+        logging.error(f"Properties file not found: {file_path}")
+    except Exception as e:
+        logging.error(f"Error reading properties file: {e}")
+    return None
+
+api_key = read_api_key('/etc/properties/videogen.properties')
+if api_key:
+    client = OpenAI(api_key=api_key)
+else:
+    raise ValueError("API key is not available. Please check the properties file.")
 
 def fix_json(json_str):
     # Replace typographical apostrophes with straight quotes
