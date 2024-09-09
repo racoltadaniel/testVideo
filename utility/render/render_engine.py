@@ -10,6 +10,22 @@ from moviepy.audio.fx.audio_loop import audio_loop
 from moviepy.audio.fx.audio_normalize import audio_normalize
 import requests
 
+
+generateFolder = ''
+def read_api_key(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            for line in file:
+                if line.startswith('generate_folder='):
+                    return line.split('=', 1)[1].strip()
+    except FileNotFoundError:
+        print(f"Properties file not found: {file_path}")
+    except Exception as e:
+        print(f"Error reading properties file: {e}")
+    return None
+
+generateFolder = read_api_key('/etc/properties/videogen.properties')
+
 def download_file(url, filename):
     with open(filename, 'wb') as f:
         response = requests.get(url)
@@ -52,7 +68,7 @@ def split_text(text, max_length=20):
     return line1, line2
 
 def get_output_media(audio_file_path, timed_captions, background_video_data, video_server, job_id):
-    OUTPUT_FILE_NAME = "/home/dani/workspaces/video-generator/rendered_video"+ str(job_id) +".mp4"
+    OUTPUT_FILE_NAME = generateFolder + "/rendered_video"+ str(job_id) +".mp4"
     magick_path = get_program_path("magick")
     print(magick_path)
     if magick_path:
