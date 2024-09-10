@@ -9,6 +9,12 @@ from moviepy.audio.fx.audio_loop import audio_loop
 from moviepy.audio.fx.audio_normalize import audio_normalize
 import requests
 
+logging.basicConfig(
+    filename= os.path.join(os.path.dirname(__file__), 'app.log'),            # Log file name
+    filemode='a',                  # Append mode
+    format='%(asctime)s - %(levelname)s - %(message)s',  # Log format
+    level=logging.DEBUG            # Log level (DEBUG for detailed logs)
+)
 
 generateFolder = ''
 def read_api_key(file_path):
@@ -22,13 +28,6 @@ def read_api_key(file_path):
     except Exception as e:
         print(f"Error reading properties file: {e}")
     return None
-
-logging.basicConfig(
-    filename='/home/dani/workspaces/Text-To-Video-AI/app.log',            # Log file name
-    filemode='a',                  # Append mode
-    format='%(asctime)s - %(levelname)s - %(message)s',  # Log format
-    level=logging.DEBUG            # Log level (DEBUG for detailed logs)
-)
 
 generateFolder = read_api_key('/etc/properties/videogen.properties')
 
